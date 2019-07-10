@@ -1,4 +1,4 @@
-package com.xd.concurrency;
+package com.xd.concurrency.example.count;
 
 import com.xd.concurrency.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @NotThreadSafe
-public class ConcurrencyTest {
+public class CountExample3 {
 
     // 请求总数
     public static int clientTotal = 5000;
@@ -39,15 +39,9 @@ public class ConcurrencyTest {
         countDownLatch.await();
         executorService.shutdown();
         System.out.println("count:" + count);
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("aa");
-            }
-        });
     }
 
-    private static void add() {
+    private synchronized static void add() {
         count++;
     }
 }
