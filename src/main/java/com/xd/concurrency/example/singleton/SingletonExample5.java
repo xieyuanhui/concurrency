@@ -21,12 +21,16 @@ public class SingletonExample5 {
      * 3、instance = memoory 设置instance指向刚分配的内存
      */
 
-    // volatile + 双重检测机制 -> 禁止指令重排
+    /**
+     * volatile + 双重检测机制 -> 禁止指令重排
+     */
     private volatile static SingletonExample5 instance = null;
 
     public static SingletonExample5 getInstance() {
-        if (instance == null) {  //双重检测机制
-            synchronized (SingletonExample5.class) {  //同步锁
+        //双重检测机制
+        if (instance == null) {
+            //同步锁
+            synchronized (SingletonExample5.class) {
                 if (instance == null) {
                     instance = new SingletonExample5();
                 }

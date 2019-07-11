@@ -1,12 +1,10 @@
 package com.xd.concurrency.example.atomic;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.LongAdder;
+import com.xd.concurrency.annoations.ThreadSafe;
 
+import java.util.concurrent.atomic.AtomicReference;
+
+@ThreadSafe
 public class AtomicExample4 {
 
     private static AtomicReference<Integer> count = new AtomicReference<>(0);

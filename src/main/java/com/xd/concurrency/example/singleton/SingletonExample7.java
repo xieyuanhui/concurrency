@@ -5,6 +5,7 @@ import com.xd.concurrency.annoations.ThreadSafe;
 
 /**
  * 枚举模式：最安全的
+ * @author LitheLight
  */
 @ThreadSafe
 @Recommend
@@ -23,7 +24,9 @@ public class SingletonExample7 {
 
         private SingletonExample7 singletonExample7;
 
-        // JVM保证这个给方法绝对只调用一次
+        /**
+         * JVM保证这个给方法绝对只调用一次
+         */
         Singleton() {
             singletonExample7 = new SingletonExample7();
         }

@@ -1,5 +1,7 @@
 package com.xd.concurrency.example.atomic;
 
+import com.xd.concurrency.annoations.ThreadSafe;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,6 +9,7 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
 
+@ThreadSafe
 public class AtomicExample3 {
     // 请求总数
     public static int clientTotal = 5000;

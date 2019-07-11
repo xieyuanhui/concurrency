@@ -3,7 +3,6 @@ package com.xd.concurrency.example.atomic;
 import lombok.Getter;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class AtomicExample5 {
 

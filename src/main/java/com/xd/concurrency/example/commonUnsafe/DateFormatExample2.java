@@ -1,23 +1,27 @@
-package com.xd.concurrency.example.atomic;
+package com.xd.concurrency.example.commonUnsafe;
 
 import com.xd.concurrency.annoations.ThreadSafe;
+import lombok.extern.slf4j.Slf4j;
 
+import java.text.SimpleDateFormat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * @author LitheLight
+ * @date 2019/7/11
+ */
+@Slf4j
 @ThreadSafe
-public class AtomicExample2 {
+public class DateFormatExample2 {
+
     // 请求总数
     public static int clientTotal = 5000;
 
     // 同时并发执行的线程数
     public static int threadTotal = 200;
-
-    public static AtomicLong count = new AtomicLong(0);
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -27,20 +31,24 @@ public class AtomicExample2 {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    add();
+                    update();
                     semaphore.release();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error("exception", e);
                 }
                 countDownLatch.countDown();
             });
         }
         countDownLatch.await();
         executorService.shutdown();
-        System.out.println("count:" + count.get());
     }
 
-    private static void add() {
-        count.incrementAndGet();
+    private static void update() {
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+            simpleDateFormat.parse("20180208");
+        } catch (Exception e) {
+            log.error("parse exception", e);
+        }
     }
 }

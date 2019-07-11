@@ -23,10 +23,11 @@ public class ImmutableExample1 {
     public static void main(String[] args) {
         map.put(1, 3);
         log.info("{}", map.get(1));
+        log.info("{}", ImmutableExample1.a);
     }
 
     private void test(int a) {
-        a = 1;
+        a = 2;
         log.info("{}", a);
     }
 }

@@ -5,7 +5,7 @@ import com.xd.concurrency.annoations.ThreadSafe;
 
 /**
  * 饿汉模式，
- * 单例实例在类装载时创建
+ * 单例实例在类装载时创建，处理多的时候加载慢
  */
 @ThreadSafe
 public class SingletonExample2 {

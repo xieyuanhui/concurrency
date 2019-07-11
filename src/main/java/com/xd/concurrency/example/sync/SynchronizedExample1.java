@@ -5,7 +5,10 @@ import java.util.concurrent.Executors;
 
 public class SynchronizedExample1 {
 
-    // 修饰一个代码块
+    /**
+     * 修饰一个代码块
+     * @param j
+     */
     public void test1(int j) {
         synchronized (this) {
             for (int i = 0; i < 10; i++) {
@@ -14,7 +17,10 @@ public class SynchronizedExample1 {
         }
     }
 
-    // 修饰一个方法
+    /**
+     * 修饰一个方法
+     * @param j
+     */
     public synchronized void test2(int j) {
         for (int i = 0; i < 10; i++) {
             System.out.format("test2 %d - %d\n", j, i);
